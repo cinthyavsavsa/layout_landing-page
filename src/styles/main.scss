@@ -1,3 +1,603 @@
+@use 'sass:color';
+
+// Variáveis de Design
+$color-accent: #d12d35;
+$color-dark: #161616;
+$color-gray: #666;
+$color-border: #e0e0e0;
+$color-white: #fff;
+$speed: 0.3s;
+$timing: ease;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: $color-dark;
+}
+
 body {
   margin: 0;
+  background-color: $color-dark;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.page__content {
+  position: relative;
+  z-index: 1;
+  background-color: $color-white;
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+}
+
+// Requisito: Zoom nas imagens ao passar o mouse
+.zoom-img {
+  object-fit: cover;
+  transition: transform $speed $timing;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// HERO & HEADER
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url('../images/hero-bg.jpg') center/cover no-repeat;
+  color: $color-white;
+}
+
+.header {
+  padding-top: 32px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  &__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__phone-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 12px);
+    background-color: rgba(22, 22, 22, 0.95);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all $speed $timing;
+    border-left: 2px solid $color-accent;
+  }
+
+  &__phone-box {
+    position: relative;
+
+    &:hover .header__phone-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__phone-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__phone-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #aaa;
+  }
+
+  &__phone-num {
+    font-size: 14px;
+    font-weight: 600;
+    transition: color $speed $timing;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+.hero__content {
+  padding-bottom: 120px;
+}
+
+.hero__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+// MENU FULLSCREEN (:target)
+.menu {
+  position: fixed;
+  inset: 0;
+  background-color: $color-accent;
+  z-index: 100;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  overflow: auto;
+  transition: opacity $speed $timing;
+
+  &:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__container {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    margin: 40px 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__link {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: 2px;
+    transition: opacity $speed $timing;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__contacts {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__contacts-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__contacts-label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+  }
+
+  &__contacts-val {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  &__call-order {
+    margin-left: auto;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid $color-white;
+    padding-bottom: 4px;
+  }
+}
+
+// SEÇÕES GENÉRICAS
+.section {
+  padding: 100px 0;
+
+  &__tag {
+    color: $color-accent;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__heading {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: 1.5px;
+    margin: 0;
+    font-weight: 400;
+
+    &--center {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__subtext {
+    text-align: center;
+    color: $color-gray;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    margin: 0 0 60px;
+  }
+}
+
+// 1. HOURS
+.hours {
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  &__info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__loc-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 0 0 16px;
+  }
+
+  &__schedule {
+    margin: 0;
+  }
+
+  &__row {
+    display: flex;
+    gap: 24px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+
+    dt {
+      width: 140px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    dd {
+      margin: 0;
+      color: $color-gray;
+      font-size: 14px;
+    }
+  }
+
+  &__closed-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+}
+
+// 2. NOW ON VIEW
+.view {
+  background-color: #fafafa;
+
+  &__showcase {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 2fr 1fr;
+      height: 420px;
+    }
+  }
+
+  &__banner,
+  &__portrait {
+    overflow: hidden;
+    display: block;
+    height: 100%;
+  }
+
+  &__grid-three {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__duo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 24px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1.6fr;
+      height: 420px;
+    }
+  }
+
+  &__duo-item {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  &__duo-meta {
+    margin-top: 16px;
+  }
+
+  &__duo-title {
+    color: $color-accent;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 6px;
+  }
+
+  &__duo-date {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+}
+
+.art-card {
+  display: block;
+  overflow: hidden;
+  height: 280px;
+}
+
+// Botão Primary (Secondary_button do Figma)
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 324px;
+  height: 56px;
+  background-color: $color-accent;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: background-color $speed $timing;
+
+  &:hover {
+    background-color: color.adjust($color-accent, $lightness: -8%);
+  }
+}
+
+// 3. MORE TO EXPLORE ONLINE
+.explore {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 60px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.explore-item {
+  &__media {
+    display: block;
+    overflow: hidden;
+    height: 380px;
+    margin-bottom: 20px;
+  }
+
+  &__tag {
+    color: $color-accent;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 16px 0 8px;
+  }
+
+  &__desc {
+    color: $color-gray;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// 4. CONTACT US
+.contacts {
+  background-color: #fafafa;
+
+  &__container {
+    max-width: 640px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  &__field {
+    display: flex;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid $color-border;
+    background-color: $color-white;
+    font-size: 15px;
+    outline: none;
+    transition: border-color $speed $timing;
+
+    &:focus {
+      border-color: $color-dark;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+  }
+
+  &__btn {
+    align-self: flex-end;
+    padding: 16px 48px;
+    background-color: $color-accent;
+    color: $color-white;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color $speed $timing;
+
+    &:hover {
+      background-color: color.adjust($color-accent, $lightness: -8%);
+    }
+  }
+}
+
+// 5. FOOTER STICKY REVEAL
+.footer {
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1600')
+      center/cover no-repeat;
+  color: $color-white;
+  padding: 80px 0;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0 0 16px;
+    font-weight: 400;
+  }
+
+  &__link {
+    display: block;
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    transition: color $speed $timing;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
 }
