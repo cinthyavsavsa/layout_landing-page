@@ -1,6 +1,8 @@
 @use 'sass:color';
+@import 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap';
 
 // Variáveis de Design
+$font-serif: 'Cinzel', Georgia, 'Times New Roman', serif;
 $color-accent: #d12d35;
 $color-dark: #161616;
 $color-gray: #666;
@@ -49,6 +51,7 @@ ul {
   padding: 0 32px;
 }
 
+// Bloqueio de scroll sob menu ativo
 .page:has(.page__menu:target) {
   overflow: hidden;
 }
@@ -64,7 +67,7 @@ ul {
   width: auto;
 }
 
-// Requisito: Zoom nas imagens ao passar o mouse
+// Requisito: Zoom suave nas imagens ao passar o mouse
 .zoom-img {
   object-fit: cover;
   transition: transform $speed $timing;
@@ -80,7 +83,6 @@ ul {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background:
     linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
     url('../images/hero-bg.jpg') center/cover no-repeat;
@@ -165,15 +167,21 @@ ul {
 }
 
 .hero__content {
-  padding-bottom: 120px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 0;
 }
 
 .hero__title {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(48px, 8vw, 96px);
-  line-height: 1.05;
-  font-weight: 400;
-  letter-spacing: 2px;
+  font-family: $font-serif;
+  font-size: clamp(40px, 6.5vw, 80px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  text-align: center;
   margin: 0;
 }
 
@@ -275,20 +283,25 @@ ul {
   padding: 100px 0;
 
   &__tag {
+    font-family: $font-serif;
     color: $color-accent;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 2px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: uppercase;
     display: block;
     margin-bottom: 8px;
   }
 
   &__heading {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: $font-serif;
     font-size: clamp(32px, 4vw, 48px);
-    letter-spacing: 1.5px;
+    line-height: 1;
+    letter-spacing: -1.5px;
     margin: 0;
-    font-weight: 400;
+    font-weight: 700;
+    color: $color-dark;
 
     &--center {
       text-align: center;
@@ -297,6 +310,8 @@ ul {
   }
 
   &__subtext {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      sans-serif;
     text-align: center;
     color: $color-gray;
     font-size: 12px;
@@ -313,51 +328,92 @@ ul {
     gap: 48px;
 
     @media (min-width: 768px) {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 411px 1fr;
+      column-gap: 80px;
+      align-items: start;
     }
+  }
+
+  &__title-col {
+    display: flex;
+    flex-direction: column;
   }
 
   &__info-col {
     display: flex;
     flex-direction: column;
     gap: 48px;
+    max-width: 498px;
+  }
+
+  &__location {
+    display: flex;
+    flex-direction: column;
   }
 
   &__loc-name {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 18px;
-    letter-spacing: 1px;
-    margin: 0 0 16px;
+    font-family: $font-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: $color-dark;
+    margin: 0 0 20px;
+    text-transform: uppercase;
   }
 
   &__schedule {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   &__row {
     display: flex;
+    align-items: baseline;
     gap: 24px;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
 
     dt {
-      width: 140px;
-      font-weight: 600;
-      font-size: 14px;
+      min-width: 110px;
+      white-space: nowrap;
+      font-family: $font-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      color: $color-dark;
+      text-transform: uppercase;
+      margin: 0;
     }
 
     dd {
       margin: 0;
-      color: $color-gray;
-      font-size: 14px;
+      white-space: nowrap;
+      font-family: $font-serif;
+      font-weight: 400; // Regular, conforme o Figma
+      font-size: 16px;
+      line-height: 27px;
+      color: $color-dark;
+      text-transform: uppercase;
     }
   }
 
   &__closed-note {
-    font-size: 11px;
-    color: #888;
-    margin-top: 12px;
-    line-height: 1.6;
+    font-family: $font-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-dark;
+    margin: 24px 0 0;
+    text-transform: uppercase;
+
+    strong {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 2px;
+    }
   }
 }
 
@@ -365,11 +421,18 @@ ul {
 .view {
   background-color: #fafafa;
 
+  &__block {
+    margin-bottom: 48px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
   &__showcase {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    margin-bottom: 24px;
 
     @media (min-width: 768px) {
       grid-template-columns: 2fr 1fr;
@@ -388,7 +451,6 @@ ul {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    margin-bottom: 24px;
 
     @media (min-width: 600px) {
       grid-template-columns: repeat(3, 1fr);
@@ -399,7 +461,6 @@ ul {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    margin-top: 24px;
 
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1.6fr;
@@ -413,22 +474,30 @@ ul {
     height: 100%;
   }
 
-  &__duo-meta {
+  &__meta {
     margin-top: 16px;
   }
 
-  &__duo-title {
+  &__meta-title {
+    font-family: $font-serif;
     color: $color-accent;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin: 0 0 6px;
+    line-height: 27px;
+    letter-spacing: 0;
+    margin: 0;
+    text-transform: uppercase;
   }
 
-  &__duo-date {
-    font-size: 12px;
-    color: #888;
+  &__meta-date {
+    font-family: $font-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0;
+    color: $color-dark;
     margin: 0;
+    text-transform: uppercase;
   }
 
   &__action {
@@ -454,10 +523,15 @@ ul {
   height: 56px;
   background-color: $color-accent;
   color: $color-white;
-  font-size: 14px;
+  font-family: $font-serif;
+  font-size: 16px;
+  line-height: 27px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 0;
   text-transform: uppercase;
+  text-align: center;
+  border: none;
+  cursor: pointer;
   transition: background-color $speed $timing;
 
   &:hover {
@@ -470,7 +544,7 @@ ul {
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 24px;
     margin-top: 60px;
 
     @media (min-width: 768px) {
@@ -480,74 +554,186 @@ ul {
 }
 
 .explore-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 324px;
+  margin: 0 auto;
+
   &__media {
     display: block;
     overflow: hidden;
-    height: 380px;
-    margin-bottom: 20px;
+    width: 100%;
+    height: 320px;
+    margin-bottom: 24px;
   }
 
   &__tag {
+    font-family: $font-serif;
     color: $color-accent;
-    font-size: 13px;
+    font-size: 24px;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin: 16px 0 8px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    margin: 0 0 12px;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   &__desc {
-    color: $color-gray;
-    font-size: 14px;
-    line-height: 1.5;
+    font-family:
+      Roboto,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    color: $color-dark;
+    text-align: center;
     margin: 0;
   }
 }
 
 // 4. CONTACT US
 .contacts {
-  background-color: #fafafa;
+  background-color: $color-white;
 
-  &__container {
-    max-width: 640px;
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-top: 60px;
+
+    @media (min-width: 900px) {
+      grid-template-columns: 1.4fr 1fr;
+      column-gap: 64px;
+      align-items: start;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+
+    @media (min-width: 600px) {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__loc-title {
+    font-family: $font-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: $color-dark;
+    margin: 0 0 24px;
+    text-transform: uppercase;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    color: $color-gray;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  &__value {
+    font-family: $font-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: $color-dark;
+    text-transform: uppercase;
+    transition: color $speed $timing;
+
+    &:hover {
+      color: $color-accent;
+    }
   }
 
   &__form {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-top: 40px;
+    width: 100%;
   }
 
   &__field {
     display: flex;
+    width: 100%;
   }
 
   &__input {
     width: 100%;
-    padding: 16px;
-    border: 1px solid $color-border;
-    background-color: $color-white;
-    font-size: 15px;
+    padding: 16px 24px;
+    background-color: #f7f7f7;
+    border: none;
     outline: none;
-    transition: border-color $speed $timing;
+    font-family: $font-serif;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: $color-dark;
+    transition: background-color $speed $timing;
+
+    &::placeholder {
+      font-family: $font-serif; // Exatamente a mesma fonte Cinzel
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: #7e7e83;
+      text-transform: uppercase;
+    }
 
     &:focus {
-      border-color: $color-dark;
+      background-color: #ededed;
     }
   }
 
   &__textarea {
+    min-height: 140px;
     resize: vertical;
   }
 
   &__btn {
-    align-self: flex-end;
-    padding: 16px 48px;
+    width: 100%; // Ocupa a largura total do form como no Figma
+    height: 56px;
     background-color: $color-accent;
     color: $color-white;
-    font-size: 14px;
-    letter-spacing: 1.5px;
-    font-weight: bold;
+    font-family: $font-serif;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
     border: none;
     cursor: pointer;
     transition: background-color $speed $timing;
@@ -558,15 +744,14 @@ ul {
   }
 }
 
-// 5. FOOTER STICKY REVEAL
+// 5. FOOTER STICKY REVEAL (FOTO DO HERO)
 .footer {
   position: sticky;
   bottom: 0;
   z-index: -1;
   background:
-    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1600')
-      center/cover no-repeat;
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url('../images/hero-bg.jpg') center/cover no-repeat;
   color: $color-white;
   padding: 80px 0;
 
@@ -581,7 +766,7 @@ ul {
   }
 
   &__title {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: $font-serif;
     font-size: 16px;
     letter-spacing: 1px;
     margin: 0 0 16px;

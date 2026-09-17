@@ -152,11 +152,11 @@
                 <h3 class="hours__loc-name">THE MET FIFTH AVENUE</h3>
                 <dl class="hours__schedule">
                   <div class="hours__row">
-                    <dt>10 AM - 5 PM</dt>
+                    <dt>10 AM – 5 PM</dt>
                     <dd>SUN, MON, TUE, THU</dd>
                   </div>
                   <div class="hours__row">
-                    <dt>10 AM - 9 PM</dt>
+                    <dt>10 AM – 9 PM</dt>
                     <dd>FRI, SAT</dd>
                   </div>
                   <div class="hours__row">
@@ -165,8 +165,26 @@
                   </div>
                 </dl>
                 <p class="hours__closed-note">
-                  CLOSED ON<br />
+                  <strong>CLOSED ON</strong>
                   THANKSGIVING DAY, DEC 25, JAN 1, AND THE FIRST MONDAY IN MAY.
+                </p>
+              </div>
+
+              <div class="hours__location">
+                <h3 class="hours__loc-name">THE MET CLOISTERS</h3>
+                <dl class="hours__schedule">
+                  <div class="hours__row">
+                    <dt>10 AM – 4.30 PM</dt>
+                    <dd>THU – TUE</dd>
+                  </div>
+                  <div class="hours__row">
+                    <dt>CLOSED</dt>
+                    <dd>WEN</dd>
+                  </div>
+                </dl>
+                <p class="hours__closed-note">
+                  <strong>CLOSED ON</strong>
+                  THANKSGIVING DAY, DEC 25, JAN 1
                 </p>
               </div>
 
@@ -191,7 +209,7 @@
           </div>
         </section>
 
-        <!-- SEÇÃO 2: NOW ON VIEW -->
+        <!-- SEÇÃO 2: NOW ON VIEW (COM LEGENDAS EM TODAS AS FOTOS) -->
         <section class="section view" id="now-on-view">
           <div class="container">
             <div class="view__header">
@@ -201,69 +219,86 @@
               </p>
             </div>
 
-            <div class="view__showcase">
-              <a href="#" class="view__banner">
-                <img
-                  src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=900"
-                  alt="A New Look at Old Masters"
-                  class="zoom-img"
-                />
-              </a>
-              <a href="#" class="view__portrait">
-                <img
-                  src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=600"
-                  alt="Medici Portrait"
-                  class="zoom-img"
-                />
-              </a>
+            <!-- Bloco 1: Old Masters -->
+            <div class="view__block">
+              <div class="view__showcase">
+                <a href="#" class="view__banner">
+                  <img
+                    src="./src/images/view-banner.jpg"
+                    alt="A New Look at Old Masters"
+                    class="zoom-img"
+                  />
+                </a>
+                <a href="#" class="view__portrait">
+                  <img
+                    src="./src/images/view-portrait.jpg"
+                    alt="Medici Portrait"
+                    class="zoom-img"
+                  />
+                </a>
+              </div>
+              <div class="view__meta">
+                <h3 class="view__meta-title">A NEW LOOK AT OLD MASTERS</h3>
+                <p class="view__meta-date">DECEMBER 12, 2020 – THROUGH SPRING 2023</p>
+              </div>
             </div>
 
-            <div class="view__grid-three">
-              <a href="#" class="art-card">
-                <img
-                  src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=500"
-                  alt="Asian Art 1"
-                  class="zoom-img art-card__img"
-                />
-              </a>
-              <a href="#" class="art-card">
-                <img
-                  src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?w=500"
-                  alt="Asian Art 2"
-                  class="zoom-img art-card__img"
-                />
-              </a>
-              <a href="#" class="art-card">
-                <img
-                  src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=500"
-                  alt="Asian Art 3"
-                  class="zoom-img art-card__img"
-                />
-              </a>
+            <!-- Bloco 2: Asian Art -->
+            <div class="view__block">
+              <div class="view__grid-three">
+                <a href="#" class="art-card">
+                  <img
+                    src="./src/images/view-art-1.jpg"
+                    alt="Asian Art 1"
+                    class="zoom-img art-card__img"
+                  />
+                </a>
+                <a href="#" class="art-card">
+                  <img
+                    src="./src/images/view-art-2.jpg"
+                    alt="Asian Art 2"
+                    class="zoom-img art-card__img"
+                  />
+                </a>
+                <a href="#" class="art-card">
+                  <img
+                    src="./src/images/view-art-3.jpg"
+                    alt="Asian Art 3"
+                    class="zoom-img art-card__img"
+                  />
+                </a>
+              </div>
+              <div class="view__meta">
+                <h3 class="view__meta-title">BODHISATTVAS OF WISDOM, COMPASSION, AND POWER</h3>
+                <p class="view__meta-date">MARCH 27, 2021 – OCTOBER 30, 2022</p>
+              </div>
             </div>
 
-            <div class="view__duo">
-              <a href="#" class="view__duo-item view__duo-item--small">
-                <img
-                  src="https://images.unsplash.com/photo-1563089145-599997674d42?w=500"
-                  alt="Decorative Clocks"
-                  class="zoom-img"
-                />
-              </a>
-              <a href="#" class="view__duo-item view__duo-item--large">
-                <img
-                  src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?w=800"
-                  alt="Porcelain Figurines"
-                  class="zoom-img"
-                />
-              </a>
+            <!-- Bloco 3: Decorative Arts & Clocks -->
+            <div class="view__block">
+              <div class="view__duo">
+                <a href="#" class="view__duo-item view__duo-item--small">
+                  <img
+                    src="./src/images/view-clocks.jpg"
+                    alt="Decorative Clocks"
+                    class="zoom-img"
+                  />
+                </a>
+                <a href="#" class="view__duo-item view__duo-item--large">
+                  <img
+                    src="./src/images/view-statues.jpg"
+                    alt="Porcelain Figurines"
+                    class="zoom-img"
+                  />
+                </a>
+              </div>
+              <div class="view__meta">
+                <h3 class="view__meta-title">INSPIRING WALT DISNEY: THE ANIMATION OF FRENCH DECORATIVE ARTS</h3>
+                <p class="view__meta-date">DECEMBER 10, 2021 – MARCH 6, 2022</p>
+              </div>
             </div>
 
-            <div class="view__duo-meta">
-              <h3 class="view__duo-title">INSPIRING WALT DISNEY: THE ANIMATION OF FRENCH DECORATIVE ARTS</h3>
-              <p class="view__duo-date">DECEMBER 10, 2021 – MARCH 6, 2022</p>
-            </div>
-
+            <!-- Botão Secondary_button -->
             <div class="view__action">
               <a href="#" class="btn-primary">VIEW ALL EXHIBITIONS</a>
             </div>
@@ -278,37 +313,37 @@
               <article class="explore-item">
                 <a href="#" class="explore-item__media">
                   <img
-                    src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=500"
+                    src="./src/images/explore-1.jpg"
                     alt="Collection areas"
                     class="zoom-img"
                   />
                 </a>
                 <h3 class="explore-item__tag">COLLECTION AREAS</h3>
-                <p class="explore-item__desc">These collections are curated to reflect the diverse scope of our holdings.</p>
+                <p class="explore-item__desc">These collection areas study, exhibit, and care for the objects in The Met collection.</p>
               </article>
 
               <article class="explore-item">
                 <a href="#" class="explore-item__media">
                   <img
-                    src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=500"
-                    alt="Travel guides"
+                    src="./src/images/explore-2.jpg"
+                    alt="Travel"
                     class="zoom-img"
                   />
                 </a>
                 <h3 class="explore-item__tag">TRAVEL</h3>
-                <p class="explore-item__desc">Travel programs and global expeditions guided by leading scholars.</p>
+                <p class="explore-item__desc">Travel with The Met connects the Museum's wide and diverse audience to art, inspiration, and historical perspective.</p>
               </article>
 
               <article class="explore-item">
                 <a href="#" class="explore-item__media">
                   <img
-                    src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=500"
+                    src="./src/images/explore-3.jpg"
                     alt="Virtual group tours"
                     class="zoom-img"
                   />
                 </a>
                 <h3 class="explore-item__tag">VIRTUAL GROUP TOURS</h3>
-                <p class="explore-item__desc">Connect your group with live museum guides through online interactive visits.</p>
+                <p class="explore-item__desc">Request a guided tour, reserve admission and lead your own small group, or request a live virtual tour led by a Museum guide.</p>
               </article>
             </div>
           </div>
@@ -318,50 +353,99 @@
         <section class="section contacts" id="contacts">
           <div class="container contacts__container">
             <h2 class="section__heading section__heading--center">CONTACT US</h2>
-            <form
-              class="contacts__form"
-              onsubmit="this.reset(); return false;"
-            >
-              <div class="contacts__field">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  class="contacts__input"
-                  required
-                />
+
+            <div class="contacts__layout">
+              <div class="contacts__info">
+                <!-- Coluna 1: The Met Fifth Avenue -->
+                <div class="contacts__col">
+                  <h3 class="contacts__loc-title">THE MET FIFTH AVENUE</h3>
+
+                  <div class="contacts__group">
+                    <span class="contacts__label">PHONE</span>
+                    <a href="tel:+12125357710" class="contacts__value contacts__value--phone">
+                      +1 212-535-7710
+                    </a>
+                  </div>
+
+                  <div class="contacts__group">
+                    <span class="contacts__label">ADDRESS</span>
+                    <a
+                      href="https://maps.google.com/?q=The+Metropolitan+Museum+of+Art+1000+5th+Ave+New+York"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="contacts__value contacts__value--address"
+                    >
+                      1000 FIFTH AVENUE<br />
+                      NEW YORK, NY 10028
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Coluna 2: The Met Cloisters -->
+                <div class="contacts__col">
+                  <h3 class="contacts__loc-title">THE MET CLOISTERS</h3>
+
+                  <div class="contacts__group">
+                    <span class="contacts__label">PHONE</span>
+                    <a href="tel:+12129233700" class="contacts__value contacts__value--phone">
+                      +1 212-923-3700
+                    </a>
+                  </div>
+
+                  <div class="contacts__group">
+                    <span class="contacts__label">ADDRESS</span>
+                    <a
+                      href="https://maps.google.com/?q=The+Met+Cloisters+99+Margaret+Corbin+Dr+New+York"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="contacts__value contacts__value--address"
+                    >
+                      99 MARGARET CORBIN DRIVE<br />
+                      FORT TRYON PARK<br />
+                      NEW YORK, NY 10040
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div class="contacts__field">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  class="contacts__input"
-                  required
-                />
-              </div>
-              <div class="contacts__field">
-                <input
-                  type="tel"
-                  placeholder="Phone number (+1 ...)"
-                  class="contacts__input"
-                  required
-                />
-              </div>
-              <div class="contacts__field">
-                <textarea
-                  placeholder="Message"
-                  rows="4"
-                  class="contacts__input contacts__textarea"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="contacts__btn">SEND</button>
-            </form>
+
+              <!-- Formulário -->
+              <form
+                class="contacts__form"
+                onsubmit="this.reset(); return false;"
+              >
+                <div class="contacts__field">
+                  <input
+                    type="text"
+                    placeholder="NAME"
+                    class="contacts__input"
+                    required
+                  />
+                </div>
+                <div class="contacts__field">
+                  <input
+                    type="email"
+                    placeholder="EMAIL"
+                    class="contacts__input"
+                    required
+                  />
+                </div>
+                <div class="contacts__field">
+                  <textarea
+                    placeholder="MESSAGE"
+                    rows="4"
+                    class="contacts__input contacts__textarea"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="contacts__btn">SEND</button>
+              </form>
+            </div>
           </div>
         </section>
       </main>
     </div>
 
-    <!-- FOOTER STICKY REVEAL -->
+    <!-- FOOTER STICKY REVEAL (FOTO DO HERO DO FIGMA) -->
     <footer class="footer">
       <div class="container footer__container">
         <div class="footer__col">
